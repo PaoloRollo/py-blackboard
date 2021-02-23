@@ -149,6 +149,26 @@ class BlackboardClient:
             return res.json()
         raise Exception("[associate_context_to_session] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
 
+    ######################
+    # recordings methods #
+    ######################
+
+    def get_recordings(self, params: dict = {}) -> dict:
+        """
+        retrieves all the recordings using the given parameters.
+
+        :param params: query string that will be passed to the request.
+        :returns: requests Response json object
+        """
+        res = self.session.get(
+            "%s/recordings" % (self.url, ),
+            params=params,
+            headers={"content-type": APPLICATION_JSON}
+        )
+        if res.status_code == 200:
+            return res.json()
+        raise Exception("[get_recordings] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
+
 
     ####################
     # sessions methods #
