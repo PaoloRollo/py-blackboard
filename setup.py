@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="py-blackboard",
-    version="0.0.1",
+    version="0.0.3",
     author="Paolo Rollo",
     author_email="paolo.rollo1997@gmail.com",
     description="Python library to interact with the Blackboard Collaborate APIs.",

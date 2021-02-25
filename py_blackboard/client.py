@@ -169,6 +169,54 @@ class BlackboardClient:
             return res.json()
         raise Exception("[get_recordings] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
 
+    def get_recording_list(self, recording_id: str) -> dict:
+        """
+        retrieves the recording list for the recording with the given id.
+
+        :param recording_id: id of the recording.
+        :returns: requests Response json object
+        """
+        res = self.session.get(
+            "%s/recordings/list" % (self.url, ),
+            params={"id": recording_id},
+            headers={"content-type": APPLICATION_JSON}
+        )
+        if res.status_code == 200:
+            return res.json()
+        raise Exception("[get_recording_list] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
+
+    def get_recording_player_url(self, recording_id: str, params: dict = None) -> dict:
+        """
+        retrieves the recording player url for the input recording.
+
+        :param recording_id: id of the recording.
+        :param params: query string that will be passed to the request.
+        :returns: requests Response json object
+        """
+        res = self.session.get(
+            "%s/recordings/%s/url" % (self.url, recording_id),
+            params=params,
+            headers={"content-type": APPLICATION_JSON}
+        )
+        if res.status_code == 200:
+            return res.json()
+        raise Exception("[get_recording_player_url] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
+
+    def delete_recording(self, recording_id: str) -> dict:
+        """
+        deletes the recording with the given id.
+
+        :param recording_id: id of the recording.
+        :returns: requests Response json object
+        """
+
+        res = self.session.delete(
+            "%s/recordings/%s" % (self.url, recording_id, ),
+            headers={"content-type": APPLICATION_JSON}
+        )
+        if res.status_code == 200:
+            return res.json()
+        raise Exception("[delete_recording] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
 
     ####################
     # sessions methods #
