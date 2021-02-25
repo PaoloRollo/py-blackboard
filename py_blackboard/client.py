@@ -215,7 +215,7 @@ class BlackboardClient:
             headers={"content-type": APPLICATION_JSON}
         )
         if res.status_code == 200:
-            return res.json()
+            return True
         raise Exception("[delete_recording] status code %d - error: %s" % (res.status_code, res.json().get("errorMessage", "unknown error occurred.")))
 
     ####################

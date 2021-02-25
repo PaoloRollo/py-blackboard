@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py-blackboard",
-    version="0.0.3",
+    version="0.0.5",
     author="Paolo Rollo",
     author_email="paolo.rollo1997@gmail.com",
     description="Python library to interact with the Blackboard Collaborate APIs.",
