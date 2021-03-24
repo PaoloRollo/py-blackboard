@@ -385,7 +385,8 @@ class BlackboardClient:
         """
         res = self.session.get(
             "%s/sessions/%s/enrollments" % (self.url, session_id, ),
-            headers={"content-type": APPLICATION_JSON}
+            headers={"content-type": APPLICATION_JSON},
+            params=params
         )
         if res.status_code == 200:
             return res.json()
